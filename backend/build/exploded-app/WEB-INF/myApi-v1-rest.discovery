@@ -1,22 +1,22 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/lCYR5HddjgOjNjQnl2kfKhRvt_I\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/gTXWlKrKGTYnlGtH3BnVUrjThHk\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
  "version": "v1",
  "description": "This is an API",
- "ownerDomain": "backend.myapplication.Randall.example.com",
- "ownerName": "backend.myapplication.Randall.example.com",
+ "ownerDomain": "backend.builditbigger.gradle.udacity.com",
+ "ownerName": "backend.builditbigger.gradle.udacity.com",
  "icons": {
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/sayHi/",
- "basePath": "/_ah/api/myApi/v1/sayHi/",
+ "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/",
+ "basePath": "/_ah/api/myApi/v1/",
  "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
- "servicePath": "myApi/v1/sayHi/",
+ "servicePath": "myApi/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -84,20 +84,10 @@
   }
  },
  "methods": {
-  "sayHi": {
-   "id": "myApi.sayHi",
-   "path": "{name}",
+  "tellJoke": {
+   "id": "myApi.tellJoke",
+   "path": "tellJoke",
    "httpMethod": "POST",
-   "parameters": {
-    "name": {
-     "type": "string",
-     "required": true,
-     "location": "path"
-    }
-   },
-   "parameterOrder": [
-    "name"
-   ],
    "response": {
     "$ref": "MyBean"
    },

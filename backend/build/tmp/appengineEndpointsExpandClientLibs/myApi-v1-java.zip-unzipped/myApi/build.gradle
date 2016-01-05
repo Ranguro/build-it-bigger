@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 
-group = 'com.example.randall.myapplication.backend'
+group = 'com.udacity.gradle.builditbigger.backend'
 archivesBaseName = 'myApi'
 version = 'v1-1.21.0-SNAPSHOT'
 
