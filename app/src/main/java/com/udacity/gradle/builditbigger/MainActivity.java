@@ -8,14 +8,33 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.randall.jokedisplay.JokeActivity;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 public class MainActivity extends ActionBarActivity  implements JokeReceivedListener{
+
+
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstidial_ad_unit_id));;
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                fetchJoke();
+            }
+        });
+
+        requestNewInterstitial();
     }
 
 
@@ -38,10 +57,26 @@ public class MainActivity extends ActionBarActivity  implements JokeReceivedList
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
     }
 
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mInterstitialAd.loadAd(adRequest);
+    }
+
     public void tellJoke(View view){
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            fetchJoke();
+        }
+    }
+
+    private void fetchJoke() {
         EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
         endpointsAsyncTask.execute(this);
     }
