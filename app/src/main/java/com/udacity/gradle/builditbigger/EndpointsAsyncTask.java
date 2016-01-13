@@ -1,9 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.example.JokeSource;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -15,14 +13,11 @@ import java.io.IOException;
 /**
  * Created by Randall on 29/12/2015.
  */
-class EndpointsAsyncTask extends AsyncTask<JokeReceivedListener, Void, String> {
-
-    private JokeSource jokeSource;
+public class EndpointsAsyncTask extends AsyncTask<JokeReceivedListener, Void, String> {
 
     private JokeReceivedListener mListener = null;
 
     private static MyApi myApiService = null;
-    private Context context;
 
     @Override
     protected String doInBackground(JokeReceivedListener... params) {
