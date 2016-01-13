@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/joke_textview"
         android:text="@string/missing_joke"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
