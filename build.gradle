@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:1.2.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,3 +17,40 @@ allprojects {
         jcenter()
     }
 }
+
+evaluationDependsOn ":app"
+
+evaluationDependsOn ":backend"
+
+project(":backend"){
+    appengine{
+        daemon true
+    }
+}
+
+
+tasks.getByPath(":app:connectedCheck").mustRunAfter tasks.getByPath(":backend:appengineRun")
+tasks.getByPath(":backend:appengineStop").mustRunAfter tasks.getByPath(":app:connectedCheck")
+
+
+
+
+task runOptionalTask () {
+    dependsOn ":backend:appengineRun", ":app:connectedCheck", ":backend:appengineStop"
+
+    description = "1. Start GCE server" +
+            "2. Run connected tests" +
+            "3. Stop GCE server"
+    doLast{
+        println "Optional task completed"
+    }
+}
+
+
+/*
+* NAMEOFTASK.finalizedBy([":app:connectedCheck", ":backend:appengineStop"])
+* (Could also be used to make it a bit cleaner.
+ */
+
+
+
