@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.randall.jokedisplay.JokeActivity;
-import com.google.android.gms.ads.AdView;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -38,7 +37,6 @@ public class MainActivityFragment extends Fragment implements JokeReceivedListen
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        AdView mAdView = (AdView) root.findViewById(R.id.adView);
         spinner = (ProgressBar)root.findViewById(R.id.progressBar1);
 
         mJokeButton = (Button) root.findViewById(R.id.tellJokebutton);
